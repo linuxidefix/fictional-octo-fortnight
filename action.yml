@@ -19,3 +19,5 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.next_version_type }}

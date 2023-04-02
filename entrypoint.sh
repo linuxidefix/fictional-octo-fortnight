@@ -1,5 +1,7 @@
 #!/bin/bash
 
+next_version_type="$1"
+
 # Récupère la version courante du projet Maven
 CURRENT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 
@@ -13,7 +15,7 @@ MINOR_VERSION=$(echo $CURRENT_VERSION | awk -F. '{printf("%d.%d.%d", $1, $2+1, 0
 MAJOR_VERSION=$(echo $CURRENT_VERSION | awk -F. '{printf("%d.%d.%d", $1+1, 0, 0)}')
 
 # Détermine la version suivante en fonction du paramètre d'entrée next_version_type
-case "${{ inputs.next_version_type }}" in
+case "$next_version_type" in
   "PATCH")
     NEXT_VERSION="${PATCH_VERSION}"
     ;;
