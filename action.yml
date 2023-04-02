@@ -1,0 +1,22 @@
+name: 'next version'
+description: 'Calculates next version for a Maven Java 17 project'
+author: 'Your Name'
+inputs:
+  next_version_type:
+    description: 'Type of next version to calculate: PATCH/MINOR/MAJOR'
+    default: 'PATCH'
+outputs:
+  current_version:
+    description: 'Current version of the project'
+  next_patch_version:
+    description: 'Next version with patch change'
+  next_minor_version:
+    description: 'Next version with minor change'
+  next_major_version:
+    description: 'Next version with major change'
+  next_version:
+    description: 'Next version based on input next_version_type'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: './entrypoint.sh'

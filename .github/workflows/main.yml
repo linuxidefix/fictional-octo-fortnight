@@ -1,0 +1,14 @@
+name: Build and test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build and test action
+      run: |
+        # sudo apt-get install curl
+        # curl https://start.spring.io/starter.zip -d type=maven-project -o /tmp/my-project.zip
+        # cd tmp; unzip /tmp/my-project.zip ; ls /tmp
+        docker build . -t my-action:test && docker run --rm my-action:test
